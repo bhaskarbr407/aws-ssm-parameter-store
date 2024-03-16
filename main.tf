@@ -1,4 +1,7 @@
-resource "aws_ssm_parameter" "parameter" {
+resource "aws_ssm_parameter" "parameters" {
+  count =length(var.parameters)
+  name = var.parameters[count.index].name
+  value = var.parameters[count.index].value
   name  = "test.test1"
   value = "hello world"
   type  = "SecureString"
